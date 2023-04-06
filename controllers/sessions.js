@@ -7,6 +7,15 @@ const User = require('../models/user.js');
 
 // New (login page)
 
+
+// New (login page)
+
+// New (login page)
+sessionsRouter.get('/new', (req, res) => {
+	res.render('sessions/new.ejs', {
+		currentUser: req.session.currentUser
+	});
+});
 // Delete (logout route)
 
 
@@ -23,7 +32,7 @@ sessionsRouter.delete('/', async (req, res) => {
 // Create (login route)
 
 sessionsRouter.post('/', async (req, res) => {
-    try {
+    // try {
     // Check for an existing user
     const foundUser = await User.findOne({ email: req.body.email });
 // send error message if no user is found
@@ -46,10 +55,10 @@ if (!foundUser) {
       res.send('Oops! Invalid credentials.');
     }
   }
-} catch (error) {
-    console.error(error);
-    res.status(500).send('Oops! Something went wrong.');
-    }
+// } catch (error) {
+//     console.error(error);
+//     res.status(500).send('Oops! Something went wrong.');
+//     }
     });
 
 
